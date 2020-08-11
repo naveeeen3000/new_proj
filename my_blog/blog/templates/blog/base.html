@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Monda&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monda&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{% static 'css/my_style.css' %}"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title></title>
+    <style>
+      .nav{
+        font-family: 'Monda', sans-serif;
+        font-family: 'Orbitron', sans-serif;
+        color:black;
+        }
+      .post_heading{
+        text-align:center;
+        }
+      .content{
+        font-family: 'Monda', sans-serif;
+        }
+        .nav{
+
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse nav">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'post_list' %}" class="navbar-brand">My Blog</a></li>
+            <li><a href="#" class="navbar-link">about</a></li>
+            <li><a href="#" class="navbar-link">Linkedin</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li class="navbar-text">Welcome : {{user.username}}</li>
+            <li><a href="{% url "new_post" %}">New Post</a></li>
+            <li><a href="{% url "drafts" %}">Drafts</a></li>
+            <li><a href="{% url "logout" %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url "login" %}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </nav>
+    <div class="container content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

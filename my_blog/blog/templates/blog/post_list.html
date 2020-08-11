@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <div class="container posts">
+    {% for post in post_list %}
+      {% if post.published_date %}
+      <!-- <h1><a href="{% url 'post_detail' pk=post.pk%}" class="list-group-item-heading">{{post.title}}</a></h1> -->
+      <div class="list-group">
+        <a href="{% url 'post_detail' pk=post.pk%}" class="list-group-item active">
+          <h4 class="list-group-item-heading">{{post.title}}</h4>
+          <p class="list-group-item-text">Published on:{{post.published_date}}</p>
+          <p>Comments : {{post.comments.count}}</p>
+        </a>
+      </div>
+      <!-- <p>Published on:{{post.published_date}}</p> -->
+      {% endif %}
+      {% empty %}
+      <h1>No posts.</h1>
+    {% endfor %}
+  </div>
+{% endblock %}

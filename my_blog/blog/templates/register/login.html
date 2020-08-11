@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h1>Login to your account.</h1>
+<p>(Must be a super user)</p>
+<form method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="" value="login" class="btn btn-primary">
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h1>Create your post here.</h1>
+<form class="form-group"  method="post">
+  {{form.as_p}}
+  {% csrf_token %}
+  <input type="submit" name="" value="submit">
+</form>
+{% endblock %}
